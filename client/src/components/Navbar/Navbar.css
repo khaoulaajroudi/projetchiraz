@@ -1,0 +1,26 @@
+.navbar {
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 5px;
+  }
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    margin-right: 2rem;
+  }
+
+  .nav-item {
+    line-height: 40px;
+    margin-right: 1rem;
+  }
+
+  .navbar img{
+    width :150px;
+  }
