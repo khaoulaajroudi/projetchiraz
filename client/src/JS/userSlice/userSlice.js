@@ -52,8 +52,8 @@ export const userSlice = createSlice({
     },
     [userRegister.fulfilled]: (state, action) => {
       state.status = "succcessssss";
-      state.user = action.payload.data.newUserToken;
-      localStorage.setItem("token", action.payload.data.token);
+      state.user = action.payload?.data?.newUserToken;
+      localStorage.setItem("token", action.payload?.data?.token);
     },
     [userRegister.rejected]: (state) => {
       state.status = "fail";
@@ -63,8 +63,8 @@ export const userSlice = createSlice({
     },
     [userLogin.fulfilled]: (state, action) => {
       state.status = "succcessssss";
-      state.user = action.payload.data.user;
-      localStorage.setItem("token", action.payload.data.token);
+      state.user = action.payload?.data?.user;
+      localStorage.setItem("token", action.payload?.data?.token);
     },
     [userLogin.rejected]: (state) => {
       state.status = "fail";
@@ -74,7 +74,7 @@ export const userSlice = createSlice({
     },
     [userCurrent.fulfilled]: (state, action) => {
       state.status = "succcessssss";
-      state.user = action.payload?.data.user;
+      state.user = action.payload?.data?.user;
     },
     [userCurrent.rejected]: (state) => {
       state.status = "fail";

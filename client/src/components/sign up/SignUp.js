@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./SignUp.css"
 import Navbar from '../Navbar/Navbar'
+import { userRegister } from '../../JS/userSlice/userSlice';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+  const [register, setregister] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
   return (
     <>
         <Navbar />
@@ -13,13 +24,17 @@ const SignUp = () => {
     <div>
     <label for="exampleInputName">
       <span class="required">First Name</span>
-    <input type="name" class="text" id="exampleInputName" placeholder="Name" /></label>
+    <input type="name" class="text" id="exampleInputName" placeholder="Name" onChange={(e) => setregister({ ...register, name: e.target.value })}/></label>
     <label for="exampleInputName">
       <span class="required">last Name </span>
-    <input type="name" class="text" id="exampleInputName" placeholder="last Name" /></label>
+    <input type="name" class="text" id="exampleInputName" placeholder="last Name" onChange={(e) =>
+              setregister({ ...register, lastname: e.target.value })
+            }/></label>
           
       <label class="label-email">
-        <input type="email" class="text" name="email" placeholder="Email" tabindex="1" required />
+        <input type="email" class="text" name="email" placeholder="Email" tabindex="1" required   onChange={(e) =>
+              setregister({ ...register, email: e.target.value })
+            }/>
         <span class="required">Email</span>
       </label>
     </div>
@@ -29,11 +44,15 @@ const SignUp = () => {
     </label>
     <div>
       <label class="label-password">
-        <input type="text" class="text" name="password" placeholder="Password" tabindex="2" required />
+        <input type="text" class="text" name="password" placeholder="Password" tabindex="2" required onChange={(e) =>
+              setregister({ ...register, password: e.target.value })
+            } />
         <span class="required">Password</span>
       </label>
     </div>
-    <input type="submit" value="Register" />
+    <input type="submit" value="Register"    onClick={() => (
+              dispatch(userRegister(register))
+            , navigate("/"))}/>
   </form>
   </>
   )

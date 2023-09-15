@@ -9,6 +9,9 @@ const UserSchema = new schema({
     type: String,
     required: true,
   },
+  adress:{
+    type:String
+  },
   email: {
     type: String,
     required: true,
@@ -17,5 +20,9 @@ const UserSchema = new schema({
     type: String,
     required: true,
   },
+  isadmin:{
+    type:Boolean,
+    default:false
+  }
 });
 module.exports = mongoose.model("user", UserSchema);

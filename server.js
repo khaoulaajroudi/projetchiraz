@@ -1,24 +1,14 @@
-//importing express
-const express = require("express");
-const cors = require("cors");
-//initialisation
-const app = express();
-//importing database
-const connectDB = require("./config/connectDB");
+const express=require('express')
+require('dotenv').config()
+const connectdb=require('./config/connectDB')
+const cors=require('cors')
 
-//importing passport
-const passport = require("passport");
-//importing dotenv
-require("dotenv").config();
-//connection database
-connectDB();
-//convert json:middleware
-app.use(express.json());
-app.use(cors());
-//running passport
-app.use(passport.initialize());
-//ROUTE
-app.use("/user", require("./routes/user"));
-app.listen(process.env.PORT, (err) => {
-  err ? console.log(err) : console.log("server is running...");
-});
+
+const app=express()
+connectdb()
+app.use(cors())
+app.use(express.json())
+app.use('/user',require('./routes/user'))
+app.use('/produit',require('./routes/Produit'))
+app.use('/commande',require('./routes/commande'))
+app.listen(process.env.PORT,(err)=>err?console.log(err):console.log("server is running"))
